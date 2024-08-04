@@ -3,7 +3,6 @@
  * @see https://v0.dev/t/LnxRCcq
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
-import { Button } from "@/components/ui/button"
 
 export default function Component() {
   return (
@@ -15,14 +14,14 @@ export default function Component() {
         </div>
         <div className="flex-1 overflow-y-auto">
           <div className="py-4 space-y-2">
-            <Button variant="ghost" className="justify-start text-yellow-900 dark:text-yellow-100">
+            <button  className="justify-start text-yellow-900 dark:text-yellow-100">
               <FolderIcon className="h-5 w-5 text-yellow-500 dark:text-yellow-300" />
               <span className="ml-2">All Notes</span>
-            </Button>
-            <Button variant="ghost" className="justify-start text-yellow-900 dark:text-yellow-100">
+            </button>
+            <button  className="justify-start text-yellow-900 dark:text-yellow-100">
               <TrashIcon className="h-5 w-5 text-yellow-500 dark:text-yellow-300" />
               <span className="ml-2">Trash</span>
-            </Button>
+            </button>
           </div>
           <div className="border-t border-yellow-200 dark:border-yellow-800" />
           <div className="p-4 space-y-2">
