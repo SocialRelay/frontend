@@ -12,7 +12,7 @@ import moment from "moment";
 export default function Home() {
   const limit = 10;
   const [page, setPage] = useState<number>(0);
-  const observer = useRef();
+  const observer = useRef<any>();
   const [relayId, setRelayId] = useState<string>('');
   const [relays, setRelays] = useState<Relay[]>([]);
   const [hasMore, setHasMore] = useState(true);
@@ -54,7 +54,7 @@ export default function Home() {
         if (entries[0].isIntersecting && hasMore) {
           setPage((prevPage) => prevPage + 1);
         }
-      });
+      }, {});
       if (node) observer.current.observe(node);
     },
     [hasMore]
