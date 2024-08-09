@@ -3,20 +3,19 @@
 import { BASE_URL } from '@/utils/axios';
 import React, { useState } from 'react';
 
-export default function TextInputComponent({relayId}: {relayId: string}) {
+interface TextInputComponentProps {
+  relayId: string;
+  onSubmitted: (text: string) => void;
+}
+
+export default function TextInputComponent({ relayId, onSubmitted }: TextInputComponentProps) {
   const [text, setText] = useState<string>('');
 
   const onChange = (e: any) => {
-    console.log('change');
-    
     setText(e.target.value);
   }
 
   const onSubmit = async (e: any) => {
-    console.log('submit');
-    console.log(text, relayId);
-    
-    
     e.preventDefault();
     const response = await fetch(`https://rndci5pmbd.execute-api.ap-northeast-2.amazonaws.com/relay`, {
       method: 'POST',
@@ -27,7 +26,9 @@ export default function TextInputComponent({relayId}: {relayId: string}) {
     });
 
     if (response.ok) {
+      onSubmitted(text);
       setText('');
+      alert('전송되었습니다.');
     }
   }
 
@@ -35,6 +36,7 @@ export default function TextInputComponent({relayId}: {relayId: string}) {
     <div className="w-full text-primary-text">
       <form onSubmit={onSubmit}>
         <textarea
+          value={text}
           onChange={onChange}
           className="w-full h-20 text-sm resize-none outline-none rounded-lg box-border shadow-lg p-3 mb-6"
           placeholder="Type your text here..."
