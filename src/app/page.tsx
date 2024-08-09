@@ -49,7 +49,7 @@ export default function Home() {
 
   const lastItemRef = useCallback(
     (node: HTMLDivElement | null) => {
-      if (observer.current) observer.current.disconnect();
+      if (observer.current && observer.current.disconnect) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
           setPage((prevPage) => prevPage + 1);
